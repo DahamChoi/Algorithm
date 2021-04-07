@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication2", "ConsoleApplication2\ConsoleApplication2.vcxproj", "{975F31C7-E18C-401A-9F60-482D9D1C74BA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "달팽이", "달팽이\달팽이.vcxproj", "{35660BCA-2AB4-41EA-A837-360D73F506ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{975F31C7-E18C-401A-9F60-482D9D1C74BA}.Release|x64.Build.0 = Release|x64
 		{975F31C7-E18C-401A-9F60-482D9D1C74BA}.Release|x86.ActiveCfg = Release|Win32
 		{975F31C7-E18C-401A-9F60-482D9D1C74BA}.Release|x86.Build.0 = Release|Win32
+		{35660BCA-2AB4-41EA-A837-360D73F506ED}.Debug|x64.ActiveCfg = Debug|x64
+		{35660BCA-2AB4-41EA-A837-360D73F506ED}.Debug|x64.Build.0 = Debug|x64
+		{35660BCA-2AB4-41EA-A837-360D73F506ED}.Debug|x86.ActiveCfg = Debug|Win32
+		{35660BCA-2AB4-41EA-A837-360D73F506ED}.Debug|x86.Build.0 = Debug|Win32
+		{35660BCA-2AB4-41EA-A837-360D73F506ED}.Release|x64.ActiveCfg = Release|x64
+		{35660BCA-2AB4-41EA-A837-360D73F506ED}.Release|x64.Build.0 = Release|x64
+		{35660BCA-2AB4-41EA-A837-360D73F506ED}.Release|x86.ActiveCfg = Release|Win32
+		{35660BCA-2AB4-41EA-A837-360D73F506ED}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
