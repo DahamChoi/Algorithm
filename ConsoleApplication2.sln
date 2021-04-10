@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "도서관", "도서관\도�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "뒤집기3", "뒤집기3\뒤집기3.vcxproj", "{59D92E21-E2AC-438F-945C-AD5467F962AD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "휴게소세우기", "휴게소세우기\휴게소세우기.vcxproj", "{5500CF1A-FF11-49C3-9217-197DC375C2D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{59D92E21-E2AC-438F-945C-AD5467F962AD}.Release|x64.Build.0 = Release|x64
 		{59D92E21-E2AC-438F-945C-AD5467F962AD}.Release|x86.ActiveCfg = Release|Win32
 		{59D92E21-E2AC-438F-945C-AD5467F962AD}.Release|x86.Build.0 = Release|Win32
+		{5500CF1A-FF11-49C3-9217-197DC375C2D8}.Debug|x64.ActiveCfg = Debug|x64
+		{5500CF1A-FF11-49C3-9217-197DC375C2D8}.Debug|x64.Build.0 = Debug|x64
+		{5500CF1A-FF11-49C3-9217-197DC375C2D8}.Debug|x86.ActiveCfg = Debug|Win32
+		{5500CF1A-FF11-49C3-9217-197DC375C2D8}.Debug|x86.Build.0 = Debug|Win32
+		{5500CF1A-FF11-49C3-9217-197DC375C2D8}.Release|x64.ActiveCfg = Release|x64
+		{5500CF1A-FF11-49C3-9217-197DC375C2D8}.Release|x64.Build.0 = Release|x64
+		{5500CF1A-FF11-49C3-9217-197DC375C2D8}.Release|x86.ActiveCfg = Release|Win32
+		{5500CF1A-FF11-49C3-9217-197DC375C2D8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

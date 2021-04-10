@@ -1,36 +1,34 @@
 ﻿#include <iostream>
 #include <string>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
 
 int main()
 {
-	string s = "BCDAF";
-	string s2 = s;
+	string s1;
+	cin >> s1;
 
+	string s2 = s1;
 	sort(s2.begin(), s2.end());
 
-	int n = -1;
-	int m = s.size();
-	int fe = m - 1;
+	int n = 0;
+	int s = 0, e = s1.length() - 1;
 
-	while (n < m)
+	while (n < s1.length() - 1)
 	{
-		++n;
-		for (int i = n; i <= fe; i++)
+		for (int i = s; i <= e; i++)
 		{
-			if (s[i] == s2[n])
+			if (s1[i] == s2[n])
 			{
-				reverse(s.begin() + n, s.begin() + i + 1);
-				if (n == 0)
-					fe = i;
-
-				break;
+				reverse(s1.begin() + s, s1.begin() + i + 1);
+				++s;
+				e = i - 1;
 			}
 		}
+
+		++n;
 	}
 
-	cout << s << endl;
+	cout << s1 << endl;
 }
