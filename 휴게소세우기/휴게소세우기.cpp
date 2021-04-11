@@ -5,6 +5,11 @@
 
 using namespace std;
 
+struct C
+{
+	int length, origin, div;
+};
+
 int main()
 {
 	int n;
@@ -28,18 +33,23 @@ int main()
 	v.insert(v.begin(), 0);
 	v.push_back(l);
 
-	vector<pair<float, float>> pv;
+	vector<C> pv;
 	for (int i = 0; i < v.size() - 1; i++)
-		pv.push_back(make_pair(v[i + 1] - v[i], 1));
+		pv.push_back({ v[i + 1] - v[i], v[i + 1] - v[i], 1 });
 
 	while (m-- > 0)
 	{
-		sort(pv.begin(), pv.end());
+		sort(pv.begin(), pv.end(), [](const C& c1, const C& c2) {
+			return (c1.length > c2.length);
+			});
 
-		float first = pv[pv.size() - 1].first;
-		float second = pv[pv.size() - 1].second;
-		pv[pv.size() - 1] = make_pair((first * second) / (second + 1.f), second + 1.f);
+		C& c = pv[0];
+		pv[0] = { (int)ceil((float)c.origin / (float)(c.div + 1)), c.origin, c.div + 1 };
 	}
 
-	cout << ceil(pv[pv.size() - 2].first);
+	sort(pv.begin(), pv.end(), [](const C& c1, const C& c2) {
+		return (c1.length > c2.length);
+		});
+
+	cout << pv[0].length;
 }
