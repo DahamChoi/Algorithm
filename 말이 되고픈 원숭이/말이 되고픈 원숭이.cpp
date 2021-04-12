@@ -4,44 +4,73 @@
 
 using namespace std;
 
+struct monkey {
+	int pos, knight, depth;
+};
+
+queue<monkey> q;
+vector<int> map;
+
 int main()
 {
-	int dx[6] = { -2,-2,0,0,2,2 };
-	int dy[6] = { -1,1,-2,2,-1,1 };
+	int dx[8] = { -1, -2, -1, -2, 1, 2, 1, 2 };
+	int dy[8] = { -2, -1, 2, 1, -2, -1, 2, 1 };
+	int mdx[4] = { 1, 0, -1, 0 };
+	int mdy[4] = { 0, 1, 0, -1 };
 
-	int n, start, end, ix, iy;
+	int n, width, height, num;
 	cin >> n;
-	cin >> ix >> iy;
-	start = iy * n + ix;
-	cin >> ix >> iy;
-	end = iy * n + ix;
+	cin >> width >> height;
 
-	queue<int> q;
-	vector<int> v(n * n);
-	q.push(start);
+	for (int i = 0; i < width * height; i++) {
+		cin >> num;
+		map.push_back(num);
+	}
 
-	while (!q.empty())
-	{
-		int t = q.front();
-		int x = t % n;
-		int y = t / n;
+	vector<bool[32]> visit(width * height);
+
+	q.push({ 0, 0, 0 });
+	visit[0][0] = true;
+
+	while (!q.empty()) {
+		monkey t = q.front();
 		q.pop();
 
-		if (t == end) {
-			cout << v[t];
+		int x = t.pos % width;
+		int y = t.pos / width;
+
+		if (t.pos == width * height - 1) {
+			cout << t.depth;
 			return 0;
 		}
 
-		for (int i = 0; i < 6; i++) {
-			int nx = x + dx[i];
-			int ny = y + dy[i];
-			if (nx >= 0 && nx < n && ny >= 0 && ny < n && v[ny * n + nx] == 0) {
-				v[ny * n + nx] = v[y * n + x] + 1;
-				q.push(ny * n + nx);
+		if (t.knight < n) {
+			for (int i = 0; i < 8; i++) {
+				int ny = (y + dy[i]);
+				int nx = (x + dx[i]);
+				int ni = ny * width + nx;
+				if (ny >= 0 && ny < height && nx >= 0 && nx < width) {
+					if (!visit[ni][t.knight + 1] && map[ni] == 0) {
+						visit[ni][t.knight + 1] = true;
+						q.push({ ni, t.knight + 1, t.depth + 1 });
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i < 4; i++) {
+			int ny = (y + mdy[i]);
+			int nx = (x + mdx[i]);
+			int ni = ny * width + nx;
+			if (ny >= 0 && ny < height && nx >= 0 && nx < width) {
+				if (!visit[ni][t.knight] && map[ni] == 0) {
+					visit[ni][t.knight] = true;
+					q.push({ ni, t.knight, t.depth + 1 });
+				}
 			}
 		}
 	}
 
-	cout << "-1";
+	cout << -1;
 	return 0;
 }
