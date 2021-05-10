@@ -13,8 +13,7 @@ void floyd(vector<vector<int>>& arr) {
     }
 }
 
-int main()
-{
+int main() {
     int n, m;
     cin >> n;
     cin >> m;
