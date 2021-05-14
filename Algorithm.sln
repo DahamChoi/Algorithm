@@ -41,7 +41,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "부분수열의 합2", "부
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "계단 수", "계단 수\계단 수.vcxproj", "{4095E68E-CC69-432B-9DE3-5F9410C8816A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "문제집", "문제집\문제집.vcxproj", "{41B809C8-5D4A-4FCE-85A9-B81666420A2C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "비숍", "문제집\문제집.vcxproj", "{41B809C8-5D4A-4FCE-85A9-B81666420A2C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "선분 그룹", "선분 그룹\선분 그룹.vcxproj", "{2114741A-D1F6-40BB-9310-B03870D25A5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -211,6 +213,14 @@ Global
 		{41B809C8-5D4A-4FCE-85A9-B81666420A2C}.Release|x64.Build.0 = Release|x64
 		{41B809C8-5D4A-4FCE-85A9-B81666420A2C}.Release|x86.ActiveCfg = Release|Win32
 		{41B809C8-5D4A-4FCE-85A9-B81666420A2C}.Release|x86.Build.0 = Release|Win32
+		{2114741A-D1F6-40BB-9310-B03870D25A5E}.Debug|x64.ActiveCfg = Debug|x64
+		{2114741A-D1F6-40BB-9310-B03870D25A5E}.Debug|x64.Build.0 = Debug|x64
+		{2114741A-D1F6-40BB-9310-B03870D25A5E}.Debug|x86.ActiveCfg = Debug|Win32
+		{2114741A-D1F6-40BB-9310-B03870D25A5E}.Debug|x86.Build.0 = Debug|Win32
+		{2114741A-D1F6-40BB-9310-B03870D25A5E}.Release|x64.ActiveCfg = Release|x64
+		{2114741A-D1F6-40BB-9310-B03870D25A5E}.Release|x64.Build.0 = Release|x64
+		{2114741A-D1F6-40BB-9310-B03870D25A5E}.Release|x86.ActiveCfg = Release|Win32
+		{2114741A-D1F6-40BB-9310-B03870D25A5E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
