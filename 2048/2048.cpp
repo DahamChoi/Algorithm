@@ -4,104 +4,128 @@
 
 using namespace std;
 
-int answer = 0;
+int n = 0, answer = 0;
 
 void move_left(vector<vector<int>>& board) {
-	for (int i = 0; i < board.size(); i++) {
-		for (int j = 0; j < board.size() - 1; j++) {
-			if (board[i][j] == board[i][j + 1]) {
-				board[i][j] *= 2;
-				board[i][j + 1] = 0;
+	for (int i = 0; i < n; i++) {
+		vector<int> stack, board_line;
+		for (int j = 0; j < n; j++) {
+			if (board[i][j] != 0) {
+				stack.push_back(board[i][j]);
 			}
 		}
-	}
 
-	for (int i = 0; i < board.size(); i++) {
-		for (int j = 0; j < board.size() - 1; j++) {
-			if (board[i][j] != 0) {
-				int k = j - 1;
-				while (k > 0 && board[i][k] == 0) {
-					--k;
+		if (stack.size() >= 1) {
+			for (auto it = stack.begin(); it != stack.end(); it++) {
+				if ((it + 1) != stack.end() && *it == *(it + 1)) {
+					board_line.push_back(*it * 2);
+					it++;
 				}
-				board[i][k + 1] = board[i][j];
-				board[i][j] = 0;
+				else {
+					board_line.push_back(*it);
+				}
 			}
+		}
+
+		for (int j = 0; j < n; j++) {
+			board[i][j] = (j < board_line.size()) ? board_line[j] : 0;
 		}
 	}
 }
 
 void move_right(vector<vector<int>>& board) {
-	for (int i = 0; i < board.size(); i++) {
-		for (int j = board.size() - 1; j > 0; j--) {
-			if (board[i][j] == board[i][j - 1]) {
-				board[i][j] *= 2;
-				board[i][j - 1] = 0;
+	for (int i = 0; i < n; i++) {
+		vector<int> stack, board_line;
+		for (int j = 0; j < n; j++) {
+			if (board[i][j] != 0) {
+				stack.push_back(board[i][j]);
 			}
 		}
-	}
 
-	for (int i = 0; i < board.size(); i++) {
-		for (int j = board.size() - 1; j > 0; j--) {
-			if (board[i][j] != 0) {
-				int k = j + 1;
-				while (k > 0 && board[i][k] == 0) {
-					++k;
+		if (stack.size() >= 1) {
+			for (int i = stack.size() - 1; i >= 0; i--) {
+				if (i - 1 >= 0 && stack[i] == stack[i - 1]) {
+					board_line.insert(board_line.begin(), (stack[i] * 2));
+					--i;
 				}
-				board[i][k - 1] = board[i][j];
-				board[i][j] = 0;
+				else {
+					board_line.insert(board_line.begin(), (stack[i]));
+				}
 			}
+		}
+
+		for (int j = 0; j < n; j++) {
+			board[i][(n - j - 1)] = (j < board_line.size()) ? board_line[(board_line.size() - j - 1)] : 0;
 		}
 	}
 }
 
 void move_up(vector<vector<int>>& board) {
-	for (int j = 0; j < board.size(); j++) {
-		for (int i = board.size() - 1; i > 0; i--) {
-			if (board[i][j] == board[i][j - 1]) {
-				board[i][j] *= 2;
-				board[i][j - 1] = 0;
+	for (int i = 0; i < n; i++) {
+		vector<int> stack, board_line;
+		for (int j = 0; j < n; j++) {
+			if (board[j][i] != 0) {
+				stack.push_back(board[j][i]);
 			}
 		}
-	}
 
-	for (int j = 0; j < board.size(); j++) {
-		for (int i = board.size() - 1; i > 0; i--) {
-			if (board[i][j] != 0) {
-				int k = j - 1;
-				while (k > 0 && board[k][j] == 0) {
-					++k;
+		if (stack.size() >= 1) {
+			for (auto it = stack.begin(); it != stack.end(); it++) {
+				if ((it + 1) != stack.end() && *it == *(it + 1)) {
+					board_line.push_back(*it * 2);
+					it++;
 				}
-				board[k - 1][j] = board[i][j];
-				board[i][j] = 0;
+				else {
+					board_line.push_back(*it);
+				}
 			}
+		}
+
+		for (int j = 0; j < n; j++) {
+			board[j][i] = (j < board_line.size()) ? board_line[j] : 0;
 		}
 	}
 }
 
 void move_down(vector<vector<int>>& board) {
+	for (int i = 0; i < n; i++) {
+		vector<int> stack, board_line;
+		for (int j = 0; j < n; j++) {
+			if (board[j][i] != 0) {
+				stack.push_back(board[j][i]);
+			}
+		}
 
+		if (stack.size() >= 1) {
+			for (int i = stack.size() - 1; i >= 0; i--) {
+				if (i - 1 >= 0 && stack[i] == stack[i - 1]) {
+					board_line.insert(board_line.begin(), (stack[i] * 2));
+					--i;
+				}
+				else {
+					board_line.insert(board_line.begin(), (stack[i]));
+				}
+			}
+		}
+
+		for (int j = 0; j < n; j++) {
+			board[(n - j - 1)][i] = (j < board_line.size()) ? board_line[(board_line.size() - j - 1)] : 0;
+		}
+	}
 }
 
 void dfs(vector<vector<int>> board, int direction, int depth) {
 	if (depth >= 5) {
-		for (int i = 0; i < board.size(); i++) {
+		for (int i = 0; i < n; i++) {
 			answer = max(*max_element(board[i].begin(), board[i].end()), answer);
 		}
 		return;
 	}
 
-	if (direction == 0) {
-		move_left(board);
-	}
-	else if (direction == 1) {
-		move_right(board);
-	}
-	else if (direction == 2) {
-		move_up(board);
-	}
-	else if (direction == 3) {
-		move_down(board);
-	}
+	if (direction == 0)	move_left(board);
+	if (direction == 1)	move_right(board);
+	if (direction == 2)	move_up(board);
+	if (direction == 3)	move_down(board);
 
 	for (int i = 0; i < 4; i++) {
 		dfs(board, i, depth + 1);
@@ -109,18 +133,16 @@ void dfs(vector<vector<int>> board, int direction, int depth) {
 }
 
 int solution(vector<vector<int>>& board) {
-	dfs(board, 0, 0);
-	dfs(board, 1, 0);
-	dfs(board, 2, 0);
-	dfs(board, 3, 0);
+	for (int i = 0; i < 4; i++) {
+		dfs(board, i, 0);
+	}
 
 	return answer;
 }
 
-int main() {
-	int n;
+int main(void) {
 	cin >> n;
-	
+
 	vector<vector<int>> board(n, vector<int>(n));
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
