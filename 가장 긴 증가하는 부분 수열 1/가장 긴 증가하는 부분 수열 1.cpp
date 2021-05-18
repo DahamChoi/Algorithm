@@ -8,6 +8,7 @@ using namespace std;
 void solution(vector<int>& numberic) {
 	set<int> lis;
 	lis.insert(numberic.front());
+	int answer = numberic.front();
 
 	for (int i = 1; i < numberic.size(); i++) {
 		auto it = lis.lower_bound(numberic[i]);
@@ -17,13 +18,14 @@ void solution(vector<int>& numberic) {
 
 		lis.insert(it, numberic[i]);
 
+		int sum = 0;
 		for (auto it = lis.begin(); it != lis.end(); it++) {
-			cout << *it << " ";
+			sum += *it;
 		}
-		cout << endl;
+		answer = max(sum, answer);
 	}
 
-	cout << lis.size();
+	cout << answer;
 }
 
 int main() {
