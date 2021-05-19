@@ -89,6 +89,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "피리 부는 사나이", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "벽 부수고 이동하기 4", "벽 부수고 이동하기 4\벽 부수고 이동하기 4.vcxproj", "{0E988BA0-6FC1-49E1-BCDA-48045DA0DE8B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rgb거리 2", "rgb거리 2\rgb거리 2.vcxproj", "{2330165A-B443-4222-B5B4-C58E821821ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -441,6 +443,14 @@ Global
 		{0E988BA0-6FC1-49E1-BCDA-48045DA0DE8B}.Release|x64.Build.0 = Release|x64
 		{0E988BA0-6FC1-49E1-BCDA-48045DA0DE8B}.Release|x86.ActiveCfg = Release|Win32
 		{0E988BA0-6FC1-49E1-BCDA-48045DA0DE8B}.Release|x86.Build.0 = Release|Win32
+		{2330165A-B443-4222-B5B4-C58E821821ED}.Debug|x64.ActiveCfg = Debug|x64
+		{2330165A-B443-4222-B5B4-C58E821821ED}.Debug|x64.Build.0 = Debug|x64
+		{2330165A-B443-4222-B5B4-C58E821821ED}.Debug|x86.ActiveCfg = Debug|Win32
+		{2330165A-B443-4222-B5B4-C58E821821ED}.Debug|x86.Build.0 = Debug|Win32
+		{2330165A-B443-4222-B5B4-C58E821821ED}.Release|x64.ActiveCfg = Release|x64
+		{2330165A-B443-4222-B5B4-C58E821821ED}.Release|x64.Build.0 = Release|x64
+		{2330165A-B443-4222-B5B4-C58E821821ED}.Release|x86.ActiveCfg = Release|Win32
+		{2330165A-B443-4222-B5B4-C58E821821ED}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
