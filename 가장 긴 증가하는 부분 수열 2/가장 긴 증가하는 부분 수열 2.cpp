@@ -1,41 +1,48 @@
 ﻿#include <iostream>
 #include <vector>
 #include <algorithm>
-#include <set>
+#include <deque>
 
 using namespace std;
 
-void solution(vector<int>& numberic) {
-	set<int> lis;
-	lis.insert(numberic.front());
-
-	for (int i = 1; i < numberic.size(); i++) {
-		auto it = lis.lower_bound(numberic[i]);
-		if (it != lis.end()) {
-			it = lis.erase(it);
-		}
-
-		lis.insert(it, numberic[i]);
-
-		for (auto it = lis.begin(); it != lis.end(); it++) {
-			cout << *it << " ";
-		}
-		cout << endl;
-	}
-
-	cout << lis.size();
-}
-
 int main() {
+	ios::sync_with_stdio(false);	cin.tie(NULL);
+
 	int n;
-	scanf("%d", &n);
+	cin >> n;
 
 	vector<int> numberic(n);
 	for (int i = 0; i < n; i++) {
-		scanf("%d", &numberic[i]);
+		cin >> numberic[i];
 	}
 
-	solution(numberic);
+	int answer = 0, st = 0;
+	vector<int> lis, trace(n);
+	for (int i = 0; i < numberic.size(); i++) {
+		if (lis.empty() || numberic[i] > lis.back()) {
+			trace[i] = lis.size();
+			lis.push_back(numberic[i]);
+		}
+		else {
+			auto it = lower_bound(lis.begin(), lis.end(), numberic[i]);
+			(*it) = numberic[i];
+			trace[i] = distance(lis.begin(), it);
+		}
+	}
+
+	int focus = lis.size() - 1;
+	deque<int> answer_queue;
+	for (int i = trace.size() - 1; i >= 0; i--) {
+		if (focus == trace[i]) {
+			--focus;
+			answer_queue.push_front(numberic[i]);
+		}
+	}
+
+	cout << answer_queue.size() << '\n';
+	for (auto it : answer_queue) {
+		cout << it << ' ';
+	}
 
 	return 0;
 }
