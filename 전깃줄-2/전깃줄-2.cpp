@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
 #include <algorithm>
+#include <deque>
 
 using namespace std;
 
@@ -17,26 +18,33 @@ int main() {
 
 	sort(electric_wires.begin(), electric_wires.end());
 
-	int max_length = 0;
-
-	vector<int> lis, trace;
+	vector<int> lis, trace(N);
 	for (int i = 0; i < electric_wires.size(); i++) {
 		if (lis.empty() || electric_wires[i].second > lis.back()) {
+			trace[i] = lis.size();
 			lis.push_back(electric_wires[i].second);
-			trace.push_back(electric_wires[i].second);
 		}
 		else {
-			auto it = upper_bound(lis.begin(), lis.end(), electric_wires[i].second);
+			auto it = lower_bound(lis.begin(), lis.end(), electric_wires[i].second);
 			(*it) = electric_wires[i].second;
+			trace[i] = distance(lis.begin(), it);
 		}
 	}
 
-	cout << electric_wires.size() - lis.size() << '\n';
-	for (int i = 0; i < electric_wires.size(); i++) {
-		auto it = find(lis.begin(), lis.end(), electric_wires[i].second);
-		if (it == lis.end()) {
-			cout << electric_wires[i].first << '\n';
+	int focus = lis.size() - 1;
+	deque<int> answer_queue;
+	for (int i = trace.size() - 1; i >= 0; i--) {
+		if (focus == trace[i]) {
+			--focus;
 		}
+		else {
+			answer_queue.push_front(electric_wires[i].first);
+		}
+	}
+
+	cout << answer_queue.size() << '\n';
+	for (auto it : answer_queue) {
+		cout << it << '\n';
 	}
 
 	return 0;
