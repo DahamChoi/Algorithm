@@ -13,7 +13,7 @@ bool compare(const string& left, const string& right) {
 		}
 	}
 
-	return left[i - 1] > right[i - 1];
+	return (left + right) > (right + left);
 }
 
 int main() {
@@ -41,11 +41,12 @@ int main() {
 
 	string answer;	int i, weapon_idx, sub_weapon_cnt = 0;
 	for (i = 0, weapon_idx = 0; i < N; i++) {
-		if (weapon_idx < K && compare(weapon[weapon_idx], sub_weapon.front())) {
+		if (weapon_idx < K && (compare(weapon[weapon_idx], sub_weapon.front()) || sub_weapon_cnt >= (N - K))) {
 			answer += weapon[weapon_idx++];
 		}
-		else if(sub_weapon_cnt++) {
+		else {
 			answer += sub_weapon.front();
+			++sub_weapon_cnt;
 		}
 	}
 
@@ -53,11 +54,3 @@ int main() {
 
 	return 0;
 }
-
-/*
-4 4
-9
-8
-71
-72
-*/
