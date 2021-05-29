@@ -39,7 +39,7 @@ vector<vector<bool>> visit(81, vector<bool>(10));
 void back_traking(vector<int> board) {
 	if (accumulate(board.begin(), board.end(), 0) == 405) {
 		for (int i = 0; i < 81; i++) {
-			cout << board[i];
+			cout << board[i] << ' ';
 			if ((i + 1) % 9 == 0) {
 				cout << '\n';
 			}
@@ -75,11 +75,15 @@ void back_traking(vector<int> board) {
 int main() {
 	vector<int> board(81);
 	for (int i = 0; i < 81; i++) {
+		cin >> board[i];
+
+		/*
 		char ch = cin.get();
 		if (ch == '\n') {
 			ch = cin.get(); 
 		}
 		board[i] = ch - '0';
+		*/
 	}
 
 	back_traking(board);
